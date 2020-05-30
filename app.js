@@ -97,10 +97,17 @@ app.use((req, res, next) => {
 });
 
 //Routes
-//var IndexRoute = require('./Routes/route');
-require('./Routes/route.js')( app, passport);
-//app.use('/', IndexRoute);
+var IndexRoute = require('./Routes/route');
+app.use('/', IndexRoute);
+
+var UserRoute = require('./Routes/UserPath')
+app.use('/Path', UserRoute);
+
+var AdminRoute = require('./Routes/Admin');
+app.use('/admin', AdminRoute);
 
 // launch ======================================================================
 app.listen(port);
 console.log('Connected to port ' + port);
+
+module.exports = app;
