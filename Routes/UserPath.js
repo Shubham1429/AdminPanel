@@ -18,31 +18,31 @@ app.get('/logout',ensureAuthenticated, (req, res) => {
 })
 
 app.get('/index', ensureAuthenticated, function(req, res) {
-    res.render('index1', {
+    res.render('./AfterLogin/index1', {
         name : req.user.name // get the user out of session and pass to template
     });
 });
 
 app.get('/about', ensureAuthenticated, function(req, res) {
-    res.render('about1', {
+    res.render('./AfterLogin/about1', {
         name : req.user.name // get the user out of session and pass to template
     });
 });
 
 app.get('/blog-single', ensureAuthenticated, function(req, res) {
-    res.render('blog-single1', {
+    res.render('./AfterLogin/blog-single1', {
         name : req.user.name // get the user out of session and pass to template
     });
 });
 
 app.get('/blog', ensureAuthenticated, function(req, res) {
-    res.render('blog1', {
+    res.render('./AfterLogin/blog1', {
         name : req.user.name // get the user out of session and pass to template
     });
 });
 
 app.get('/contact', ensureAuthenticated, function(req, res) {
-    res.render('contact1', {
+    res.render('./AfterLogin/contact1', {
         name : req.user.name // get the user out of session and pass to template
     });
 });
@@ -60,7 +60,7 @@ app.get('/mentor', ensureAuthenticated, function(req, res) {
                 
                 console.log('Data is coming');
                 console.log(data)
-                res.render('mentor1',{ records:data, name : req.user.name });
+                res.render('./AfterLogin/mentor1',{ records:data, name : req.user.name });
                 console.log('upload successfull')
             }
         
@@ -72,13 +72,13 @@ app.get('/mentor', ensureAuthenticated, function(req, res) {
 
 
 app.get('/services', ensureAuthenticated, function(req, res) {
-    res.render('services1', {
+    res.render('./AfterLogin/services1', {
         name : req.user.name // get the user out of session and pass to template
     });
 });
 
 app.get('/project', ensureAuthenticated, function(req, res) {
-    res.render('project1', {
+    res.render('./AfterLogin/project1', {
         name : req.user.name // get the user out of session and pass to template
     });
 });

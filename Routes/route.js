@@ -11,25 +11,25 @@ const { ensureAuthenticated } = require('../config/auth');
 //Routing Before Login//
 
 //Routing Handle Get Request
-app.get('/', function(req, res, next) {  res.render('index', { title: 'Express' });});
-app.get('/index', function(req, res, next) {  res.render('index', { title: 'Express' });});
-app.get('/about', (req, res, next) => {  res.render('about', { title: 'Express' });});
-app.get('/blog_single', (req, res, next) =>{ res.render('blog_single', { title: 'Express'});});
-app.get('/blog', (req, res, next) =>{ res.render('blog', { title: 'Express'});});
-app.get('/contact', (req, res, next) =>{ res.render('contact', { title: 'Express'});});
-app.get('/Login',   (req, res, next) =>{ res.render('Login', { title: 'Express'});});
-app.get('/project', (req, res, next) =>{ res.render('project', { title: 'Express'});});
-app.get('/services', (req, res, next) =>{ res.render('services', { title: 'Express'});});
-app.get('/register', (req, res, next) =>{ res.render('register', { title: 'Express'});});
+app.get('/', function(req, res, next) {  res.render('./BeforeLogin/index', { title: 'Express' });});
+app.get('/index', function(req, res, next) {  res.render('./BeforeLogin/index', { title: 'Express' });});
+app.get('/about', (req, res, next) => {  res.render('./BeforeLogin/about', { title: 'Express' });});
+app.get('/blog_single', (req, res, next) =>{ res.render('./BeforeLogin/blog_single', { title: 'Express'});});
+app.get('/blog', (req, res, next) =>{ res.render('./BeforeLogin/blog', { title: 'Express'});});
+app.get('/contact', (req, res, next) =>{ res.render('./BeforeLogin/contact', { title: 'Express'});});
+app.get('/Login',   (req, res, next) =>{ res.render('./BeforeLogin/Login', { title: 'Express'});});
+app.get('/project', (req, res, next) =>{ res.render('./BeforeLogin/project', { title: 'Express'});});
+app.get('/services', (req, res, next) =>{ res.render('./BeforeLogin/services', { title: 'Express'});});
+app.get('/register', (req, res, next) =>{ res.render('./BeforeLogin/register', { title: 'Express'});});
 
 app.get('/logout',ensureAuthenticated, (req, res) => {
     req.logOut();
     req.flash('success_msg', 'You are Logged out');
-    res.redirect('/login');
+    res.redirect('login');
 })
 
 app.get('/edit-profile', ensureAuthenticated, function(req, res) {
-    res.render('edit-profile', {
+    res.render('./BeforeLogin/edit-profile', {
         name : req.user.name // get the user out of session and pass to template
     });
 });
@@ -47,7 +47,7 @@ app.get('/mentor',function(req,res){
             
             console.log('Data is coming');
             console.log(data)
-            res.render('mentor',{ records:data });
+            res.render('./BeforeLogin/mentor',{ records:data });
             console.log('upload successfull')
         }
     
@@ -77,7 +77,7 @@ app.post('/register', (req, res) =>{
     }
 
     if(errors.length > 0){   
-        res.render('register', {
+        res.render('./BeforeLogin/register', {
            errors,
            name,
            email,
@@ -93,7 +93,7 @@ app.post('/register', (req, res) =>{
             if(users) {
                 //User Exists
                 errors.push({ msg: 'Email is already registered'});
-                res.render('register', {
+                res.render('./BeforeLogin/register', {
                     errors,
                     name,
                     email,

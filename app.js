@@ -39,13 +39,6 @@ app.set('Path',path.join(__dirname,'Views'));
 app.set('view engine', 'html');
 
 
-/*
-//EJS
-app.use(expressLayouts);
-app.engine('ejs', require('ejs').renderFile);
-app.set('Views',path.join(__dirname,'Views'));
-app.set('view engine', 'ejs');
-*/
 
 //Body-parser
 app.use(express.urlencoded({ extended: true}));
@@ -67,26 +60,6 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash());
 
-//Express Session
-// app.use(session({
-//     secret: 'DragonBallroxxx',
-//     resave: true,
-//     saveUninitialized: true,
-//     cookie:{
-//         maxAge : 1000*60*2,
-//         sameSite:true,
-//        secure: true,
-//     },
-//     name: 'mid',
-
-// }));
-
-//Passport Middleware
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-//Connect Flash
-//app.use(flash());
 
 //Global Variables
 app.use((req, res, next) => {

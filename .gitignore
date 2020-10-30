@@ -1,0 +1,8 @@
+node_modules
+views
+route.js
+userPath.js
+public
+config
+models
+app.js

@@ -25,10 +25,10 @@ const upload = multer({
 }).single('file');
 //-----------------------//
 
-app.get('/admin', function(req, res, next) {
+app.get('/', function(req, res, next) {
     upmod.exec(function(err,data){
   if(err) throw err;
-  res.render('admin', { title: 'Mentor Details', records:data, success:'' });
+  res.render('./Admin/admin', { title: 'Mentor Details', records:data, success:'' });
     });
     
   });
@@ -46,7 +46,7 @@ app.post('/adminsub', upload, function(req, res, next) {
         if(err) throw err;
         else{
             req.flash('success_msg', 'Data Uploaded');
-            res.render('admin', { title: 'Employee Records', records:data});
+            res.render('./Admin/admin', { title: 'Employee Records', records:data});
             }
         });
         })  
@@ -57,7 +57,7 @@ app.get('/edit', function(req, res, next) {
     var edit= Uploads.find(req.body.id);
     edit.exec(function(err,data){
     if(err) throw err;
-    res.render('edit', { title: 'Edit Record', records:data });
+    res.render('./Admin/edit', { title: 'Edit Record', records:data });
     });    
 });
 
@@ -84,7 +84,7 @@ app.post('/update', upload,function(req, res, next) {
     upmod.exec(function(err,data){
         if(err) 
             throw err;
-        res.redirect("/admin");  });
+        res.redirect("./Admin/admin");  });
     });
 });
 
@@ -100,7 +100,7 @@ app.get('/delete', function(req, res, next) {
             throw err;
         else{
             req.flash('success_msg', 'Data Deleted');
-            res.render('admin', { title: 'Employee Records', records:data});
+            res.render('./Admin/admin', { title: 'Employee Records', records:data});
             }
         });
     });  
